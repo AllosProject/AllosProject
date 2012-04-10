@@ -1,0 +1,10 @@
+SpaceGame/SpaceGame/bin/
+SpaceGame/SpaceGame/obj/
+SpaceGame/SpaceGameContent/obj/
+SpaceGame/SpaceGameContent/bin/
+Farseer Physics Engine 3.3 XNA/bin/
+Farseer Physics Engine 3.3 XNA/obj/
+*.cache
+*.csproj.FileListAbsolute.txt
+*.contentproj.FileListAbsolute.txt
+*.suo

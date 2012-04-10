@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame", "SpaceGame\SpaceGame\SpaceGame.csproj", "{E1A8DD6F-5C5B-4201-AD9D-8F51A814A556}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SpaceGameContent", "SpaceGame\SpaceGameContent\SpaceGameContent.contentproj", "{0A1F544B-D847-4A07-99A6-04DE45430486}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGameContent", "SpaceGame\SpaceGameContent\SpaceGameContent.contentproj", "{0A1F544B-D847-4A07-99A6-04DE45430486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics XNA", "Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj", "{0A850700-1ABB-4288-A391-6726B90EBEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{E1A8DD6F-5C5B-4201-AD9D-8F51A814A556}.Release|x86.Build.0 = Release|x86
 		{0A1F544B-D847-4A07-99A6-04DE45430486}.Debug|x86.ActiveCfg = Debug|x86
 		{0A1F544B-D847-4A07-99A6-04DE45430486}.Release|x86.ActiveCfg = Release|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Debug|x86.ActiveCfg = Debug|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Debug|x86.Build.0 = Debug|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.ActiveCfg = Release|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,3 +8,4 @@ Farseer Physics Engine 3.3 XNA/obj/
 *.csproj.FileListAbsolute.txt
 *.contentproj.FileListAbsolute.txt
 *.suo
+*.Debug.cachefile

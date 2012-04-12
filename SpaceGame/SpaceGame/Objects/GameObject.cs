@@ -115,14 +115,18 @@ namespace SpaceGame.Classes
             timer = 0;
         }
 
-        public void right()
+        public void right()//(mattkist)É preciso encontrar uma maneira de aplicar Torque ao invez de modificar a rotação do objeto
         {
-            body.Rotation += angleIncrement;
+            if (Body.AngularVelocity < 4f)
+                body.ApplyTorque(1100000f);
+            //body.Rotation += angleIncrement; //(mattkis) Antigo código do movimento de angulo da nave
         }
 
-        public void left()
+        public void left()//(mattkist)É preciso encontrar uma maneira de aplicar Torque ao invez de modificar a rotação do objeto
         {
-            body.Rotation -= angleIncrement;
+            if (Body.AngularVelocity > -4f)
+                body.ApplyTorque(-1100000f);
+            //body.Rotation -= angleIncrement; //(mattkis) Antigo código do movimento de angulo da nave 
         }
 
         public void up()
@@ -138,6 +142,19 @@ namespace SpaceGame.Classes
 
         public void desaccel()
         {
+            /*(mattkist)
+             * OBSERVAÇÃO: 
+             * Usei esta desaceleração Angular para não ficar tão dificil movimentar a nave. Trust me
+             */ 
+            body.AngularVelocity = body.AngularVelocity * 0.9f;
+
+
+            /*(mattkist)
+             * OBSERVAÇÃO: 
+             * modificar diretamente o atributo de LinearVelocity em relacão ao tempo
+             * faz com que a ação da gravidade na nave bugue
+             */
+            /*
             float speed_X = body.LinearVelocity.X * 0.98f;
             float speed_Y = body.LinearVelocity.Y * 0.98f;
             if (speed_X < 0.1f && speed_X > -0.1f)
@@ -145,6 +162,7 @@ namespace SpaceGame.Classes
             if (speed_Y < 0.1f && speed_Y > 0.1f)
                 speed_Y = 0;
             body.LinearVelocity = new Vector2(speed_X,speed_Y);
+            */
         }
 
         virtual public void move()

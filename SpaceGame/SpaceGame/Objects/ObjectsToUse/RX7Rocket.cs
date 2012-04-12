@@ -73,7 +73,7 @@ namespace SpaceGame.Objects.ObjectsToUse
             base.init(graphics);
             Factor = 150;
             Texture = Art.Images.getShipSprite("nave2");
-            Acceleration =6f;
+            Acceleration =4f;
             AngleIncrement = 0.06f;
             Desacceleration = 0.05f;
             MaxSpeed = 300;
@@ -87,7 +87,12 @@ namespace SpaceGame.Objects.ObjectsToUse
             Body.Position = new Vector2(0,0);
             Body.CollisionCategories = Category.Cat2;
             Body.CollidesWith = Category.All & ~Category.Cat10;
-            Body.Restitution = 0.5f;
+            Body.Restitution = 0.4f;
+            Body.Friction = 1f;
+            
+            Body.ResetMassData(); /*(mattkist)Chamando esa função é "concertado" o mass center, fazendo a nave responder muito melhor aos impactor, o mesmo é feito no LevelDinamicObject*/
+            Body.Mass = 400f;
+
         }
 
 

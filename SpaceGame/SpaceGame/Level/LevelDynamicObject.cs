@@ -27,6 +27,9 @@ namespace SpaceGame.Other
             Body.BodyType = BodyType.Dynamic;
             Body.Position = position;
             Body.Restitution = 1f;
+            Body.Friction = 1f;
+
+            Body.ResetMassData();
  
         }
 

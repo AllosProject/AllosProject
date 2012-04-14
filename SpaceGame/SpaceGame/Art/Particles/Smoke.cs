@@ -9,6 +9,8 @@ namespace SpaceGame.Art.Particles
 {
     class Smoke : Particle
     {
+        
+
         public Smoke(Vector2 position, float size, Vector2 direction)
         {
             Texture = Art.Images.getParticleSprite("smoke");
@@ -17,7 +19,15 @@ namespace SpaceGame.Art.Particles
             ParticleManager.getDirection(this);
             data.Position = position;
             data.Scaling = size;
-            data.ModColor = Util.getNextInt(0,2) == 1 ? Color.White : Color.Gray;            
+            data.ModColor = Util.getNextInt(0,2) == 1 ? Color.White : Color.Gray;
+            
+            
+        }
+
+        public override void update(GameTime gameTime)
+        {
+            base.update(gameTime);
+            
         }
     }
 }

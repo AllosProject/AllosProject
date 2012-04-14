@@ -30,12 +30,13 @@ namespace SpaceGame.Art.Particles
 
         public override void update(GameTime gameTime)
         {
-            base.update(gameTime);
+            
             angle += 0.02f;
             data.Scaling += 0.005f;
             timer += gameTime.ElapsedGameTime.Milliseconds;
 
             data.ModColor = Util.getNextInt(0,2) < 1 ? Color.Gray : Color.White;
+            base.update(gameTime);
         }
 
         public override bool isAlive()

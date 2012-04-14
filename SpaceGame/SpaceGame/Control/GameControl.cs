@@ -43,7 +43,7 @@ namespace SpaceGame.Control
             weaponManager.update(gameTime);
         }
 
-        public override void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void draw(SpriteBatch spriteBatch)
         {
             base.draw(spriteBatch);
 

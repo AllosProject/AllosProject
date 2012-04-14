@@ -14,7 +14,19 @@ namespace SpaceGame.Art.Particles
         public ParticleData data;
         //Particle texture
         protected Texture2D texture;
-        
+
+        private float alpha;
+
+        public Particle()
+        {
+            alpha = 1f;
+        }
+
+        public float Alpha
+        {
+            get { return alpha; }
+            set { alpha = value; }
+        }
 
         public Texture2D Texture
         {
@@ -36,7 +48,8 @@ namespace SpaceGame.Art.Particles
             data.BirthTime++;
             //Position is updated to move tha particle around the space
             data.Position += data.direction;
-            
+            alpha -= 0.02f;
+            data.ModColor = Color.White * alpha;
         }
 
         public virtual bool isAlive()
@@ -53,6 +66,7 @@ namespace SpaceGame.Art.Particles
             public Vector2 Position;
             public float Scaling;
             public Color ModColor;
+            
         }
     }
 }

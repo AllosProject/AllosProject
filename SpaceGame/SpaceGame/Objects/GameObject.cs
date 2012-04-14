@@ -26,6 +26,13 @@ namespace SpaceGame.Classes
         public SpaceGame.Delegates.Delegates.Accelerate accelerate;
         private float timer;
         private float factor;
+        private float alpha;
+
+        public float Alpha
+        {
+            get { return alpha; }
+            set { alpha = value; }
+        }
 
         public float Factor
         {
@@ -146,7 +153,7 @@ namespace SpaceGame.Classes
              * OBSERVAÇÃO: 
              * Usei esta desaceleração Angular para não ficar tão dificil movimentar a nave. Trust me
              */ 
-            body.AngularVelocity = body.AngularVelocity * 0.9f;
+            body.AngularVelocity *= 0.9f;
 
 
             /*(mattkist)

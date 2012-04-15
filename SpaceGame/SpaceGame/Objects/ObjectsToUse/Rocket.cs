@@ -23,6 +23,8 @@ namespace SpaceGame.Objects.ObjectsToUse
 
         public override void init(GraphicsDeviceManager graphics)
         {
+            this.LaunchSound = @"Bullets\Launch\BottleRocket";
+            this.CollideSound = @"Bullets\Collide\GranadeExplosion";
             Texture = Art.Images.getBulletSprite("Rocket");
             base.init(graphics);            
             Speed = new Vector2(1, 1);
@@ -42,13 +44,13 @@ namespace SpaceGame.Objects.ObjectsToUse
 
         public override bool myOnColision(Fixture f1, Fixture f2, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-
             createSelfParticles();
             return base.myOnColision(f1, f2, contact);
         }
 
         public override void createSelfParticles()
         {
+            base.createSelfParticles();
             GameControl.particleManager.addParticle("Explosion", ParticleManager.createParticle(ParticleEnum.Explosion, Body.Position, (float)Util.getNextDouble(), Vector2.Zero));
             GameControl.particleManager.addParticle("ExplosionSmoke", ParticleManager.createParticle(ParticleEnum.Smoke, Body.Position, 5, Vector2.Zero));
             GameControl.particleManager.addParticle("ExplosionSmoke", ParticleManager.createParticle(ParticleEnum.Smoke, Body.Position, 5, Vector2.Zero));

@@ -112,6 +112,7 @@
     <Compile Include="Art\Particles\Particle.cs" />
     <Compile Include="Art\Particles\ParticleManager.cs" />
     <Compile Include="Art\Particles\Smoke.cs" />
+    <Compile Include="Control\SoundControl.cs" />
     <Compile Include="Enums\ParticleEnum.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Objects\ObjectsToUse\Rocket.cs" />

@@ -22,6 +22,8 @@ namespace SpaceGame.Objects.Weapons
         private float rotation;
         private double lifeTime;
         private double timer;
+        private string launchSound;
+        private string collideSound;
 
         public double LifeTime
         {
@@ -54,6 +56,18 @@ namespace SpaceGame.Objects.Weapons
             set { isAlive = value; }
         }
 
+        public string LaunchSound
+        {
+            get { return launchSound; }
+            set { launchSound = value; }
+        }
+
+        public string CollideSound
+        {
+            get { return collideSound; }
+            set { collideSound = value; }
+        }
+
         public override void draw(SpriteBatch spriteBatch)
         {
             base.draw(spriteBatch);
@@ -69,6 +83,8 @@ namespace SpaceGame.Objects.Weapons
             Body.OnCollision += myOnColision;
             timer = 0;
             lifeTime = 0;
+            if (launchSound != "")
+                SoundControl.PlaySoundEffect(launchSound);
         }
 
         public virtual bool myOnColision(Fixture f1, Fixture f2, Contact contact)
@@ -81,6 +97,8 @@ namespace SpaceGame.Objects.Weapons
 
         public virtual void createSelfParticles()
         {
+            if (collideSound != "")
+                SoundControl.PlaySoundEffect(collideSound);
         }
 
         public override void update(GameTime gameTime)

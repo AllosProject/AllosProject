@@ -122,16 +122,21 @@ namespace SpaceGame.Classes
             timer = 0;
         }
 
+        public void stopAngularVelocity()
+        {
+            this.Body.AngularVelocity = 0;
+        }
+
         public void right()//(mattkist)É preciso encontrar uma maneira de aplicar Torque ao invez de modificar a rotação do objeto
         {
-            if (Body.AngularVelocity < 4f)
+            if (Body.AngularVelocity < 5f)
                 body.ApplyTorque(1100000f);
             //body.Rotation += angleIncrement; //(mattkis) Antigo código do movimento de angulo da nave
         }
 
         public void left()//(mattkist)É preciso encontrar uma maneira de aplicar Torque ao invez de modificar a rotação do objeto
         {
-            if (Body.AngularVelocity > -4f)
+            if (Body.AngularVelocity > -5f)
                 body.ApplyTorque(-1100000f);
             //body.Rotation -= angleIncrement; //(mattkis) Antigo código do movimento de angulo da nave 
         }

@@ -39,6 +39,7 @@ namespace SpaceGame
         {
             // TODO: Add your initialization logic here
             Art.Images.loadArt(Content);
+            SoundControl.Init(this.Content);
             gameControl.init(graphics);           
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
@@ -54,7 +55,6 @@ namespace SpaceGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
 
             // TODO: use this.Content to load your game content here
         }

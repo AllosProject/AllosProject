@@ -72,7 +72,7 @@ namespace SpaceGame.Objects.ObjectsToUse
         {
             base.init(graphics);
             Factor = 150;
-            Texture = Art.Images.getShipSprite("nave2");
+            Texture = Art.Images.getShipSprite("nave");
             Acceleration =4f;
             AngleIncrement = 0.06f;
             Desacceleration = 0.05f;

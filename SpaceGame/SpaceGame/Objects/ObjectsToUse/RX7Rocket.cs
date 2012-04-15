@@ -19,13 +19,24 @@ using SpaceGame.Art.Particles;
 namespace SpaceGame.Objects.ObjectsToUse
 {
     class RX7Rocket : Ships
-    {        
+    {
+        /*
+         * (mattkist)
+         * adicionado um atributo para controlar a velocidade angular quando o jogador pára de rotacionar a nave
+         * adicionando uma melhor experiência em dirigibilidade
+         */
+        float turningMoment;
 
         public override void update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();
             Keys[] keys = ks.GetPressedKeys();
             int keysSize = keys.Length;
+
+            if (turningMoment + 50 < gameTime.TotalGameTime.Milliseconds)
+            {
+                stopAngularVelocity();
+            }
 
             for (int i = 0; i < keysSize; i++)
             {
@@ -44,14 +55,18 @@ namespace SpaceGame.Objects.ObjectsToUse
                 }
                 if (keys[i] == PlayerKeyboard.LEFT)
                 {
+                    turningMoment = gameTime.TotalGameTime.Milliseconds;
                     left();
                 }
                 if (keys[i] == PlayerKeyboard.RIGHT)
                 {
+                    turningMoment = gameTime.TotalGameTime.Milliseconds;
                     right();
                 }
                 if (keys[i] == PlayerKeyboard.SPACE)
-                    GameControl.weaponManager.addBullet(this.GetHashCode().ToString(), Body.Position, Body.Rotation,Graphics);
+                {
+                    GameControl.weaponManager.addBullet(this.GetHashCode().ToString(), Body.Position, Body.Rotation, Graphics);
+                }
             }
             if (keysSize == 0)
             {
@@ -89,12 +104,18 @@ namespace SpaceGame.Objects.ObjectsToUse
             Body.CollidesWith = Category.All & ~Category.Cat10;
             Body.Restitution = 0.4f;
             Body.Friction = 1f;
+            Body.OnCollision += myOnColision;
             
             Body.ResetMassData(); /*(mattkist)Chamando esa função é "concertado" o mass center, fazendo a nave responder muito melhor aos impactor, o mesmo é feito no LevelDinamicObject*/
             Body.Mass = 400f;
 
         }
 
+        public virtual bool myOnColision(Fixture f1, Fixture f2, Contact contact)
+        {
+            SoundControl.PlaySoundEffect(@"Ships\Collide\PunchCollide");
+            return true;
+        }
 
         public override void draw(SpriteBatch spriteBatch)
         {

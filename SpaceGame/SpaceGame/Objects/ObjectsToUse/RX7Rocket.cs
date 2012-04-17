@@ -15,6 +15,7 @@ using FarseerPhysics.Common.PolygonManipulation;
 using FarseerPhysics.Common.Decomposition;
 using SpaceGame.Other;
 using SpaceGame.Art.Particles;
+using SpaceGame.Enums;
 
 namespace SpaceGame.Objects.ObjectsToUse
 {
@@ -74,11 +75,11 @@ namespace SpaceGame.Objects.ObjectsToUse
                 desaccel();
             }
 
-            //if ((gameTime.TotalGameTime.TotalMilliseconds - Timer) > Factor)
-            //{
-            //    GameControl.particleManager.addParticle(this.GetHashCode() + "", Body.Position, 10, Body.LinearVelocity);
-            //    Timer = (float)gameTime.TotalGameTime.TotalMilliseconds;
-            //}
+            if ((gameTime.TotalGameTime.TotalMilliseconds - Timer) > Factor)
+            {
+                GameControl.particleManager.addParticle("ShipEngineSmoke", ParticleManager.createParticle(ParticleEnum.Smoke, Body.Position, 1, Body.LinearVelocity));
+                Timer = (float)gameTime.TotalGameTime.TotalMilliseconds;
+            }
            
             base.update(gameTime);
         }
@@ -87,7 +88,7 @@ namespace SpaceGame.Objects.ObjectsToUse
         {
             base.init(graphics);
             Factor = 150;
-            Texture = Art.Images.getShipSprite("nave");
+            Texture = Art.Images.getShipSprite("nave3");
             Acceleration =4f;
             AngleIncrement = 0.06f;
             Desacceleration = 0.05f;

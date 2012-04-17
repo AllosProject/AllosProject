@@ -27,6 +27,8 @@ namespace SpaceGame.Classes
         private float timer;
         private float factor;
         private float alpha;
+        private float height;
+        private float width;
 
         public float Alpha
         {
@@ -103,7 +105,22 @@ namespace SpaceGame.Classes
         public Texture2D Texture
         {
             get { return texture; }
-            set { texture = value; }
+            set 
+            {
+                texture = value; 
+                height = texture.Height;
+                width = texture.Width;
+            }
+        }
+
+        public float Width
+        {
+            get { return width; }
+        }
+
+        public float Height
+        {
+            get { return height; }
         }
 
         public override void update(GameTime gameTime)

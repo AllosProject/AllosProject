@@ -21,20 +21,20 @@ namespace SpaceGame.Objects.ObjectsToUse
 {
     class RX7Rocket : Ships
     {
-        /*
-         * (mattkist)
-         * adicionado um atributo para controlar a velocidade angular quando o jogador pára de rotacionar a nave
-         * adicionando uma melhor experiência em dirigibilidade
-         */
-        float turningMoment;
+
+        private double turningMoment;
+        private double collisionMoment;
+        private double gameTimeMilliseconds;
 
         public override void update(GameTime gameTime)
         {
+            this.gameTimeMilliseconds = gameTime.TotalGameTime.TotalMilliseconds;
+
             KeyboardState ks = Keyboard.GetState();
             Keys[] keys = ks.GetPressedKeys();
             int keysSize = keys.Length;
 
-            if (turningMoment + 50 < gameTime.TotalGameTime.Milliseconds)
+            if (turningMoment + 50 < gameTimeMilliseconds)
             {
                 stopAngularVelocity();
             }
@@ -56,12 +56,12 @@ namespace SpaceGame.Objects.ObjectsToUse
                 }
                 if (keys[i] == PlayerKeyboard.LEFT)
                 {
-                    turningMoment = gameTime.TotalGameTime.Milliseconds;
+                    turningMoment = this.gameTimeMilliseconds;
                     left();
                 }
                 if (keys[i] == PlayerKeyboard.RIGHT)
                 {
-                    turningMoment = gameTime.TotalGameTime.Milliseconds;
+                    turningMoment = this.gameTimeMilliseconds;
                     right();
                 }
                 if (keys[i] == PlayerKeyboard.SPACE)
@@ -107,14 +107,19 @@ namespace SpaceGame.Objects.ObjectsToUse
             Body.Friction = 1f;
             Body.OnCollision += myOnColision;
             
-            Body.ResetMassData(); /*(mattkist)Chamando esa função é "concertado" o mass center, fazendo a nave responder muito melhor aos impactor, o mesmo é feito no LevelDinamicObject*/
-            Body.Mass = 400f;
+            Body.ResetMassData(); 
+            //Body.Mass = 1f;
 
         }
 
         public virtual bool myOnColision(Fixture f1, Fixture f2, Contact contact)
         {
-            SoundControl.PlaySoundEffect(@"Ships\Collide\PunchCollide");
+            this.turningMoment += 2*1000; //2 segundos de giro(se possível)
+            if (this.collisionMoment + 500 < this.gameTimeMilliseconds)
+            {
+                SoundControl.PlaySoundEffect(@"Ships\Collide\PunchCollide");
+            }
+            this.collisionMoment = this.gameTimeMilliseconds;
             return true;
         }
 

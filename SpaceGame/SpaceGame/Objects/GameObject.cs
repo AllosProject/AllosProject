@@ -6,7 +6,7 @@ using SpaceGame.Structure;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
-using SpaceGame.Control;
+using SpaceGame.Control; 
 using FarseerPhysics.Collision.Shapes;
 
 namespace SpaceGame.Classes

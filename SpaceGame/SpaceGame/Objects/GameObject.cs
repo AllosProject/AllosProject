@@ -49,9 +49,6 @@ namespace SpaceGame.Classes
             set { timer = value; }
         }
 
-
-
-
         public Vector2 Origin
         {
             get { return origin; }
